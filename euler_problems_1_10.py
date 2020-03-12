@@ -70,23 +70,19 @@ def problem_4(number_of_digit=3):
 
 
 # 5th problem ==============================================
-# n = input('Podaj n ')
-# n = int(n)
-# g = factorial(n)
-# x = primes(n) # looking for primes in this range
-# # n = n/product(x)
+def problem_5(max_factor = 20):
+    real_factors = []
+    for i in range(1, max_factor + 1):
+        if isprime(i):
+            real_factors.append(i)
+        elif product(real_factors) % i != 0:
+            i_primes = prime_factors(i)
+            real_factors += [element for element in i_primes if product(real_factors) * element % i == 0]
+    return product(real_factors)
+
 #
-#
-# y = factors(n)
-# for i in range(0,len(y)):
-#     if y[i] not in x:
-#         x = x+[y[i]]
-# x = sorted(x)
-# # y = factors(n)
-# # factors(n)
-# print(n)
-# print(x)
-# print(y)
+# print(problem_5())
+
 
 # 6th problem ==============================================
 def problem_6(number=100):
@@ -113,7 +109,7 @@ def problem_7(max_num=10001):
     return prime_numbers[-1]
 
 
-print(problem_7())
+# print(problem_7())
 
 #  8th problem ==============================================
 def problem_8(num=13):
