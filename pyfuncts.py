@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 
 def ispalindrome(string):
@@ -38,6 +39,10 @@ def primes(n):
 def prime_factors(max_num):
     num_factors = factors(max_num)
     return [number for number in num_factors if isprime(number)]
+
+
+def anti_diagonal(arr):
+    return np.fliplr(arr).diagonal()
 
 
 if __name__ == '__main__':
