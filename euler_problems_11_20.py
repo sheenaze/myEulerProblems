@@ -48,21 +48,17 @@ D = np.array([[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 
 # print(problem_11(D,4))
 
 # 12th problem ==============================================
-def sum_to_n(n):
-    return int(n * (n + 1) * 0.5)
-
-
 def problem_12(bound=500):
-    n = 1
-    fact_num = len(factors(sum_to_n(n)))
+    n = 11794
+    fact_num = len(divisors(sum_to_n(n)))
     while fact_num <= bound:
         n += 1
-        fact_num = len(factors(sum_to_n(n)))
+        fact_num = len(divisors(sum_to_n(n)))
         print(n, sum_to_n(n), fact_num)
     return sum_to_n(n)
 
 
-# print(problem_12())
+print(problem_12())
 
 # 13th problem ==============================================
 
@@ -172,3 +168,27 @@ def problem13():
 
 
 # print(problem13())
+
+# 14th problem ==============================================
+def collatz_series(number):
+    series = [number]
+    while number > 1:
+        number = number / 2 if is_even(number) else 3 * number + 1
+        series.append(number)
+    return series
+
+
+# print(collatz_series(13))
+
+
+def problem14():
+    series_lengths = []
+    for i in range(10 ** 6):
+        series_len = len(collatz_series(i))
+        series_lengths.append(series_len)
+    mx = max(series_lengths)
+    return series_lengths.index(mx)
+
+# print(problem14())
+
+#
