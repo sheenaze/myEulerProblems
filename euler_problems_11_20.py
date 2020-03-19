@@ -1,6 +1,9 @@
 import numpy as np
 import time
+import inflect
 from pyfuncts import *
+
+engine = inflect.engine()
 
 
 # 11th problem ==============================================
@@ -210,4 +213,24 @@ def problem16(power=1000):
     return result
 
 
-print(problem16())
+# print(problem16())
+
+
+# 17th problem ==============================================
+number_text = engine.number_to_words(345)
+print(number_text.split())
+
+
+def problem17(up_to_number=1000):
+    letter_sum = 0
+    for number in range(1, up_to_number + 1):
+        number_as_str = engine.number_to_words(number)
+        if '-' in number_as_str:
+            number_as_str = number_as_str.replace('-', ' ')
+        number_str_as_list = number_as_str.split()
+        for element in number_str_as_list:
+            letter_sum += len(element)
+    return letter_sum
+
+
+print(problem17())
