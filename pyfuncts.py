@@ -81,13 +81,13 @@ if __name__ == '__main__':
 
     start1 = time.time()
     f1 = factors(60*10**6)
-    print(len(f1), f1)
+    # print(len(f1), f1)
     end1 = time.time()
     dif1 = end1 - start1
 
     start2 = time.time()
     f2 = divisors(60*10**6)
-    print(len(f2), f2)
+    # print(len(f2), f2)
     end2 = time.time()
     dif2 = end2 - start2
 

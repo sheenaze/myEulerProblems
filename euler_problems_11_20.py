@@ -58,7 +58,7 @@ def problem_12(bound=500):
     return sum_to_n(n)
 
 
-print(problem_12())
+# print(problem_12())
 
 # 13th problem ==============================================
 
@@ -189,6 +189,13 @@ def problem14():
     mx = max(series_lengths)
     return series_lengths.index(mx)
 
+
 # print(problem14())
 
-#
+# 15th problem ==============================================
+def problem15(n=20):
+    path = 2 * n
+    return factorial(path) / (factorial(n) * factorial(n))
+
+
+print(problem15())
