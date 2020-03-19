@@ -198,4 +198,16 @@ def problem15(n=20):
     return factorial(path) / (factorial(n) * factorial(n))
 
 
-print(problem15())
+# print(problem15())
+
+# 16th problem ==============================================
+def problem16(power=1000):
+    two_to_power = 2 ** power
+    two_to_power_list = list(str(two_to_power))
+    result = 0
+    for element in two_to_power_list:
+        result += int(element)
+    return result
+
+
+print(problem16())
