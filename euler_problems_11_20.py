@@ -1,5 +1,3 @@
-import numpy as np
-import time
 import inflect
 from pyfuncts import *
 
@@ -206,21 +204,13 @@ def problem15(n=20):
 # 16th problem ==============================================
 def problem16(power=1000):
     two_to_power = 2 ** power
-    two_to_power_list = list(str(two_to_power))
-    result = 0
-    for element in two_to_power_list:
-        result += int(element)
-    return result
+    return sum_of_digits(two_to_power)
 
 
 # print(problem16())
 
 
 # 17th problem ==============================================
-number_text = engine.number_to_words(345)
-print(number_text.split())
-
-
 def problem17(up_to_number=1000):
     letter_sum = 0
     for number in range(1, up_to_number + 1):
@@ -233,4 +223,17 @@ def problem17(up_to_number=1000):
     return letter_sum
 
 
-print(problem17())
+# print(problem17())
+
+
+# 18th problem ==============================================
+
+# 19th problem ==============================================
+
+# 20th problem ==============================================
+def problem20(number=100):
+    number_fact = factorial(number)
+    return sum_of_digits(number_fact)
+
+
+print(problem20())

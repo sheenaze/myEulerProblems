@@ -76,6 +76,15 @@ def is_odd(number):
     return number % 2 != 0
 
 
+def sum_of_digits(number):
+    number_as_list = list(str(number))
+    result = 0
+    for element in number_as_list:
+        result += int(element)
+    return result
+
+
+
 if __name__ == '__main__':
     print(factors(2520))
 
