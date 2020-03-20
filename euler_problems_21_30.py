@@ -1,4 +1,5 @@
 from pyfuncts import *
+from itertools import permutations
 
 
 # 21st problem ==============================================
@@ -34,4 +35,69 @@ def problem22(filename='names.txt'):
     print(result)
 
 
-problem22()
+# problem22()
+
+# 23rd problem ==============================================
+start_number = 24
+end_number = 28123  # 28123  # all integers greater than 28123 can be written as the sum of two abundant numbers
+
+
+def abundant_numbers(min_number=start_number, max_number=end_number):
+    abundant_numbers_set = []
+    for number in range(min_number, max_number + 1):
+        number_fact = divisors(number)
+        number_fact_sum = sum(number_fact[0:-1])
+        if number_fact_sum > number:
+            # print(number, number_fact_sum)
+            abundant_numbers_set.append(number)
+
+    return abundant_numbers_set
+
+
+# print(abundant_numbers())
+
+def problem23(min_number=24, max_number=end_number):
+    abundant_numbers_set = abundant_numbers(1, max_number + 1)
+    non_abundant_sum = sum_to_n(23)
+    for number in range(min_number, max_number):
+        i = 0
+        cond = True
+        true_tab = []
+        while abundant_numbers_set[i] < number and cond and i <= len(abundant_numbers_set):
+            dif = number - abundant_numbers_set[i]
+            cond = dif not in abundant_numbers_set
+            true_tab.append(cond)
+            print(number, cond, i)
+            i += 1
+        if all(true_tab):
+            non_abundant_sum += number
+    return non_abundant_sum
+
+
+# print(problem23())
+
+
+# 24th problem ==============================================
+def problem24(numbers=None, permutation_index=10 ** 6):
+    if numbers is None:
+        numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    permut = permutations(numbers)
+    permut_list = list(permut)
+    return permut_list[permutation_index - 1]
+
+
+print(problem24())
+
+
+# 25th problem ==============================================
+def problem25(digits=1000):
+    fib = 0
+    n = 1
+    while len(str(fib)) < digits:
+        fib_gen = fibonacci_generator(n)
+        fib = list(fib_gen)[-1]
+        n += 1
+    return n - 1
+
+
+print(problem25())

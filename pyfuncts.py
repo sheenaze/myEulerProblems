@@ -88,9 +88,15 @@ def days_numbers(year):
     return days
 
 
+def fibonacci_generator(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = a + b, a
+        yield a
+
+
 if __name__ == '__main__':
     print(factors(2520))
-
 
     # for i in range(10**5, 10**6):
     #     start1 = time.time()
