@@ -25,12 +25,10 @@ def problem22(filename='names.txt'):
     i = 0
     result = 0
     for name in names_list:
-        print(name)
         i += 1
         name_number = 0
         for letter in name:
             name_number += (ord(letter) - 64)
-            print(letter, ord(letter), name_number)
         score = name_number * i
         result += score
     print(result)
