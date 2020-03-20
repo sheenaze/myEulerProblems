@@ -29,15 +29,12 @@ def divisors(number):
     :return: divisors of the given number
     """
     square_root = int(math.sqrt(number))
-    factors_below_root = [i for i in range(1, square_root + 1) if number % i == 0]
-    factors_above_root = []
-    for i in range(1, len(factors_below_root) - 1):
-        for j in range(i, len(factors_below_root)):
-            element = factors_below_root[i] * factors_below_root[j]
-            if element not in factors_below_root and number % element == 0:
-                factors_below_root.append(element)
-    factors_below_root.extend(factors_above_root)
-    return factors_below_root
+    number_factors = [i for i in range(1, square_root + 1) if number % i == 0]
+    for ind in range(0, len(number_factors)):
+        div = number / number_factors[ind]
+        if div not in number_factors:
+            number_factors.append(div)
+    return sorted(number_factors)
 
 
 def product(x):
@@ -94,16 +91,20 @@ def days_numbers(year):
 if __name__ == '__main__':
     print(factors(2520))
 
-    start1 = time.time()
-    f1 = factors(60 * 10 ** 6)
-    # print(len(f1), f1)
-    end1 = time.time()
-    dif1 = end1 - start1
 
-    start2 = time.time()
-    f2 = divisors(60 * 10 ** 6)
-    # print(len(f2), f2)
-    end2 = time.time()
-    dif2 = end2 - start2
-
-    print(dif1, dif2)
+    # for i in range(10**5, 10**6):
+    #     start1 = time.time()
+    #     f1 = factors(i)
+    #     end1 = time.time()
+    #     dif1 = end1 - start1
+    #
+    #
+    #     start2 = time.time()
+    #     f2 = divisors(i)
+    #     end2 = time.time()
+    #     dif2 = end2 - start2
+    #     if len(f1) != len(f2):
+    #         # print(f1, f2)
+    #         print(i, dif1, dif2, len(f1), len(f2), 'UWAGA!!!')
+    #     else:
+    #         print(i, round(dif1/dif2, 2) ,dif1, dif2)
