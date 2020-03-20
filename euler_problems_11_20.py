@@ -1,4 +1,5 @@
 import inflect
+import datetime
 from pyfuncts import *
 
 engine = inflect.engine()
@@ -229,11 +230,22 @@ def problem17(up_to_number=1000):
 # 18th problem ==============================================
 
 # 19th problem ==============================================
+def problem19(start_date_list=(1901, 1, 1), end_date_list=(2000, 12, 31)):
+    # How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
+    sundays = 0
+    for year in range(start_date_list[0], end_date_list[0] + 1):
+        for month in range(1, 12 + 1):
+            day = datetime.datetime(year, month, 1)
+            sundays += 1 if day.weekday() == 6 else 0
+    return sundays
+
+
+print(problem19())
+
 
 # 20th problem ==============================================
 def problem20(number=100):
     number_fact = factorial(number)
     return sum_of_digits(number_fact)
 
-
-print(problem20())
+# print(problem20())

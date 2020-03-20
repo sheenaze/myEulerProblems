@@ -84,18 +84,24 @@ def sum_of_digits(number):
     return result
 
 
+def days_numbers(year):
+    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+        days[1] = 29
+    return days
+
 
 if __name__ == '__main__':
     print(factors(2520))
 
     start1 = time.time()
-    f1 = factors(60*10**6)
+    f1 = factors(60 * 10 ** 6)
     # print(len(f1), f1)
     end1 = time.time()
     dif1 = end1 - start1
 
     start2 = time.time()
-    f2 = divisors(60*10**6)
+    f2 = divisors(60 * 10 ** 6)
     # print(len(f2), f2)
     end2 = time.time()
     dif2 = end2 - start2
