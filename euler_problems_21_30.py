@@ -86,7 +86,7 @@ def problem24(numbers=None, permutation_index=10 ** 6):
     return permut_list[permutation_index - 1]
 
 
-print(problem24())
+# print(problem24())
 
 
 # 25th problem ==============================================
@@ -100,4 +100,33 @@ def problem25(digits=1000):
     return n - 1
 
 
-print(problem25())
+# print(problem25())
+
+
+# 26th problem ==============================================
+def problem26(max_denumerator=1000):
+    denumerators = [1 / denumerator for denumerator in range(max_denumerator)]
+
+
+# 27th problem ==============================================
+
+def quadratic(a, b, n):
+    return n ** 2 + a * n + b
+
+
+def problem27():
+    ab = []
+    lengths = []
+    for a in range(-999, 1000):
+        for b in range(-1000, 1001):
+            n = 0
+            ab.append([a, b])
+            while isprime(quadratic(a, b, n)):
+                n += 1
+            lengths.append(n + 1)
+    ind_max = lengths.index(max(lengths))
+    print(lengths[ind_max], ab[ind_max])
+    return ab[ind_max][0] * ab[ind_max][1]
+
+
+print(problem27())
