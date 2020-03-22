@@ -129,4 +129,17 @@ def problem27():
     return ab[ind_max][0] * ab[ind_max][1]
 
 
-print(problem27())
+# print(problem27())
+
+# 28th problem ==============================================
+def problem28(max_size=1001):
+    result = 1
+    i = 0
+    for number in range(3, max_size + 1, 2):
+        i += 1
+        result += 4 * number ** 2 - 2 * number + 2 - 8 * i  # umber ** 2 + number ** 2 - (number - 1) * 2 + number**2-i*6 + number**2 - 2*i
+
+    return result
+
+
+# print(problem28())
