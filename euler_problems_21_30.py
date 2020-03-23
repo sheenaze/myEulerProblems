@@ -137,9 +137,22 @@ def problem28(max_size=1001):
     i = 0
     for number in range(3, max_size + 1, 2):
         i += 1
-        result += 4 * number ** 2 - 2 * number + 2 - 8 * i  # umber ** 2 + number ** 2 - (number - 1) * 2 + number**2-i*6 + number**2 - 2*i
+        result += 4 * number ** 2 - 2 * number + 2 - 8 * i
 
     return result
 
 
-# print(problem28())
+print(problem28())
+
+
+# 29th problem ==============================================
+def problem29():
+    terms = []
+    for a in range(2, 101):
+        for b in range(2, 101):
+            term = a ** b
+            if term not in terms:
+                terms.append(term)
+    return len(terms)
+
+# print(problem29())
