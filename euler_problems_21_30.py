@@ -160,25 +160,11 @@ def problem29():
 
 # 30th problem ==============================================
 def problem30(power=5):
-    digits = [i for i in range(0, 10)]
-    digits_to_power = [digit ** power for digit in digits]
     numbers_equals_to_sum = []
-    for l in range(2, power + 2):
-        comb = combinations_with_replacement(digits, l)
-        comb_list = list(comb)
-        for com_element in comb_list:
-            com_element = list(com_element)
-            perm = permutations(com_element)
-            perm_list = list(perm)
-            for element in perm_list:
-                element = list(element)
-                number = int(''.join([str(digit) for digit in element]))
-                powers_sum = 0
-                for num in element:
-                    powers_sum += digits_to_power[num]
-
-                if number == powers_sum and number not in numbers_equals_to_sum and number not in [0, 1]:
-                    numbers_equals_to_sum.append(number)
+    for number in range(10, 10 ** 6 + 1):
+        digits_to_power = [int(digit) ** power for digit in str(number)]
+        if number == sum(digits_to_power):
+            numbers_equals_to_sum.append(number)
     print(numbers_equals_to_sum)
     return sum(numbers_equals_to_sum)
 
