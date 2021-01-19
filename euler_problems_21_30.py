@@ -1,5 +1,5 @@
 from pyfuncts import *
-from itertools import permutations, combinations_with_replacement
+from itertools import permutations
 
 
 # 21st problem ==============================================
@@ -169,4 +169,6 @@ def problem30(power=5):
     return sum(numbers_equals_to_sum)
 
 
-print(problem30())
+# print(problem30())
+
+
