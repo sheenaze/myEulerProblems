@@ -104,8 +104,46 @@ def problem25(digits=1000):
 
 
 # 26th problem ==============================================
+def fractionToDecimal(numr, denr):
+    res = ""
+    mp = {}
+    rem = numr % denr
+    while ((rem != 0) and (rem not in mp)):
+        # Store this remainder
+        mp[rem] = len(res)
+        # Multiply remainder with 10
+        rem = rem * 10
+        # Append rem / denr to result
+        res_part = rem // denr
+        res += str(res_part)
+
+        # Update remainder
+        rem = rem % denr
+
+    if (rem == 0):
+        return ""
+    else:
+        return res[mp[rem]:]
+
+
 def problem26(max_denumerator=1000):
-    denumerators = [1 / denumerator for denumerator in range(max_denumerator)]
+    denominators = [denumerator for denumerator in range(2, max_denumerator+1)]
+    lens = {}
+    for denominator in denominators:
+        res = fractionToDecimal(1, denominator)
+        lens[denominator] = len(res)
+    vals = list(lens.values())
+    mval = max(vals)
+    position = vals.index(mval)
+    print(lens)
+    return list(lens.keys())[position]
+
+print(problem26())
+# Driver code
+
+
+# This code is contributed by divyeshrabadiya07
+
 
 
 # 27th problem ==============================================
@@ -142,7 +180,7 @@ def problem28(max_size=1001):
     return result
 
 
-print(problem28())
+# print(problem28())
 
 
 # 29th problem ==============================================
