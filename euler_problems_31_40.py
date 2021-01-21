@@ -33,3 +33,26 @@ def problem31_efficient(nums, max_num):
 
 nums = [1,2,5,10,20,50,100,200]
 # print(problem31_efficient(nums, max(nums)))
+
+# 32nd problem ==============================================
+def problem32():
+    min_multiplicand = 2
+    max_multiplicand = 98
+    min_multiplier = 123
+    max_multiplier = 4987
+    excluded_multiplicands = [num for num in range(min_multiplicand, max_multiplicand+1) if len(set(str(num))) != len(str(num))]
+    excluded_multipliers = [num for num in range(min_multiplier, max_multiplier+1) if len(set(str(num))) != len(str(num))]
+
+    results = []
+    for multiplicand in range(min_multiplicand, max_multiplicand + 1):
+        for multiplier in range(min_multiplier, max_multiplier + 1):
+            if multiplier not in excluded_multipliers and multiplicand not in excluded_multiplicands:
+                val = multiplicand * multiplier
+                txt = str(val) + str(multiplicand) + str(multiplier)
+                if ''.join(sorted(txt)) == '123456789' and val not in results:
+                    print()
+                    results.append(val)
+    print(results)
+    return sum(results)
+
+# print(problem32())
