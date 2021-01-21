@@ -52,7 +52,40 @@ def problem32():
                 if ''.join(sorted(txt)) == '123456789' and val not in results:
                     print()
                     results.append(val)
-    print(results)
+    # print(results)
     return sum(results)
 
 # print(problem32())
+
+# 33rd problem ==============================================
+def problem33():
+    min_num = 11
+    max_num = 98
+    min_den = 12
+    max_denom = 99
+    excluded = [num for num in range(min_num, max_denom+1) if num%10 == 0]
+
+    prod = 1
+    for num in range(min_num, max_num+1):
+        for denom in range(num+1, max_denom+1):
+            num_txt = sorted(str(num))
+            den_txt = sorted(str(denom))
+            repeated = [num in den_txt for num in num_txt]
+            if any(repeated) and num not in excluded and denom not in excluded:
+                # print('old', num, denom)
+                ind = repeated.index(True)
+                ind_den = den_txt.index(num_txt[ind])
+                num_txt.pop(ind)
+                new_num = int(num_txt[0])
+                den_txt.pop(ind_den)
+                new_den = int(den_txt[0])
+                frac = num / denom
+                frac_new = new_num / new_den
+                # print('new', new_num, new_den)
+                if frac == frac_new:
+                    prod *= frac
+                    # print({num:denom})
+                    # print({new_num: new_den})
+
+    return(prod)
+print(problem33())
