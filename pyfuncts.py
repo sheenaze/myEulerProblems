@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import time
+from timeit import default_timer as timer
 
 
 def ispalindrome(string):
@@ -45,7 +46,11 @@ def product(x):
 
 
 def isprime(num):
-    return len(factors(num)) == 2
+    boundary  = int(num ** (1/2)) + 1
+    for i in range (2, boundary):
+        if num % i == 0:
+            return False
+    return True
 
 
 def primes(n):
@@ -95,8 +100,62 @@ def fibonacci_generator(n):
         yield a
 
 
-if __name__ == '__main__':
-    print(factors(2520))
+# if __name__ == '__main__':
+    # start = timer()
+    # for num in range(100 + 1):
+    #     # print('number', num)
+    #     is_prime = isprime(num)
+    # end = timer()
+    # print(end - start)
+    # #
+    # start = timer()
+    # for num in range(1000 + 1):
+    #     is_prime = isprime(num)
+    # end = timer()
+    # print(end - start)
+    # #
+    # start = timer()
+    # for num in range(10000 + 1):
+    #     is_prime = isprime(num)
+    # end = timer()
+    # print(end - start)
+    # #
+    # for num in range(100000 + 1):
+    #     is_prime = isprime(num)
+    # end = timer()
+    # print(end - start)
+    #
+    # for num in range(1000000 + 1):
+    #     is_prime = isprime(num)
+    # end = timer()
+    # print(end - start)
+    #
+    # start = timer()
+    # print(primes(100))
+    # end = timer()
+    # print(end - start)
+    #
+    # start = timer()
+    # print(primes(1000))
+    # end = timer()
+    # print(end - start)
+    #
+    # start = timer()
+    # print(primes(10000))
+    # end = timer()
+    # print(end - start)
+    #
+    # start = timer()
+    # print(primes(100000))
+    # end = timer()
+    # print(end - start)
+    #
+    # start = timer()
+    # print(primes(1000000))
+    # end = timer()
+    # print(end - start)
+
+    # print(factors(2520))
 
     # for i in range(10**5, 10**6):
     #     start1 = time.time()
