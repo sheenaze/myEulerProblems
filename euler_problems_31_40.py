@@ -1,6 +1,7 @@
 from pyfuncts import *
 from itertools import permutations, combinations_with_replacement
 import numpy as np
+from timeit import default_timer as timer
 
 # 31st problem ==============================================
 def problem31_inefficient():
@@ -88,4 +89,65 @@ def problem33():
                     # print({new_num: new_den})
 
     return(prod)
-print(problem33())
+# print(problem33())
+
+# 34th problem ==============================================
+def problem34():
+    num_dict ={
+        0: 1,
+        1: factorial(1),
+        2: factorial(2),
+        3: factorial(3),
+        4: factorial(4),
+        5: factorial(5),
+        6: factorial(6),
+        7: factorial(7),
+        8: factorial(8),
+        9: factorial(9),
+    }
+# print(num_dict)
+
+# 35th problem ==============================================
+
+
+def problem35(num):
+    primes_to_num = primes(num)
+    primes_str = []
+    for prime in primes_to_num:
+        ps = str(prime)
+        cond = '0' not in ps and '2' not in ps and '4' not in ps and '5' not in ps and '6' not in ps and '8' not in ps
+        if cond or len(ps) == 1:
+            primes_str.append(ps)
+    circulars = []
+    for prime in primes_str:
+        if len(np.unique(list(prime))) == 1:
+            circulars.append([prime])
+        else:
+            rots_for_prime = [prime]
+            for perm in permutations(prime):
+                new_val = ''.join(perm)
+                while new_val != prime and new_val in primes_str:
+                    rots_for_prime.append(new_val)
+                    primes_str.remove(new_val)
+            if len(rots_for_prime) == len(prime):
+                circulars.append(rots_for_prime)
+    return sum([len(item) for item in circulars])
+
+
+# print(problem35(1000000))
+
+
+# 36th problem ==============================================
+
+
+def problem36(limit):
+    result = 0
+    for num in range(limit + 1):
+        if ispalindrome(str(num)):
+            num_2 = bin(num).split('b')[1]
+            if ispalindrome(num_2):
+                result += num
+    return result
+
+# limit = 10 ** 6
+# print(problem36(limit))
