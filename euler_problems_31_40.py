@@ -1,6 +1,7 @@
 from pyfuncts import *
 from itertools import permutations, combinations_with_replacement
 import numpy as np
+import statistics
 from timeit import default_timer as timer
 
 # 31st problem ==============================================
@@ -151,3 +152,50 @@ def problem36(limit):
 
 # limit = 10 ** 6
 # print(problem36(limit))
+
+# 37th problem ==============================================
+def problem37():
+    num = 10
+    truncatables = []
+    while len(truncatables) != 11:
+        num += 1
+        if isprime(num):
+            nls1 = list(str(num))
+            cond2 = all([str(val) not in str(num) for val in [0, 4, 6, 8]])
+            if cond2:
+                nls2 = list(str(num))
+                ls = len(str(num))
+                i = 0
+                while len(nls1) > 1:
+                    nls1.pop(-1)
+                    new_num = int(''.join(nls1))
+                    i += 1 if isprime(new_num) else 0
+                if ls-1 == i:
+                    i = 0
+                    while len(nls2) > 1:
+                        nls2.pop(0)
+                        new_num = int(''.join(nls2))
+                        i += 1 if isprime(new_num) else 0
+                if ls-1 == i:
+                    print('Hurray!', num)
+                    truncatables.append(num)
+    return(sum(truncatables))
+
+# print(problem37())
+
+# 38th problem ==============================================
+# 39th problem ==============================================
+
+
+def problem39(p_max):
+    perimeters = []
+    for a in range(1, int(p / 2)):
+        for b in range(a, p):
+            c = (a ** 2 + b ** 2) ** (1/2)
+            if int(c) == c and sum([a, b, c]) <= p:
+                perimeters.append(sum([a,b,c]))
+
+    return statistics.mode(perimeters)
+#
+# p = 1000
+# print(problem39(p))
