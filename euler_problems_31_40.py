@@ -189,13 +189,27 @@ def problem37():
 
 def problem39(p_max):
     perimeters = []
-    for a in range(1, int(p / 2)):
-        for b in range(a, p):
+    for a in range(1, int(p_max / 2)):
+        for b in range(a, p_max):
             c = (a ** 2 + b ** 2) ** (1/2)
-            if int(c) == c and sum([a, b, c]) <= p:
+            if int(c) == c and sum([a, b, c]) <= p_max:
                 perimeters.append(sum([a,b,c]))
 
     return statistics.mode(perimeters)
 #
 # p = 1000
 # print(problem39(p))
+
+# 40th problem ==============================================
+
+
+def problem40(indices):
+    num = '.1'
+    i = 2
+    while len(num) <= 10 ** 6:
+        num += str(i)
+        i += 1
+    return product([int(num[ind]) for ind in indices])
+
+# indices = [10 ** n for n in range(6)]
+# print(problem40(indices))
