@@ -101,6 +101,10 @@ def fibonacci_generator(n):
         a, b = a + b, a
         yield a
 
+def is_pandigital(number):
+    num_txt = str(number)
+    nums = [str(i) in num_txt for i in range(1, len(num_txt)+1)]
+    return all(nums)
 
 # if __name__ == '__main__':
     # start = timer()
