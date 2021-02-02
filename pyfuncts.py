@@ -101,10 +101,17 @@ def fibonacci_generator(n):
         a, b = a + b, a
         yield a
 
-def is_pandigital(number):
+def is_pandigital(number, first_number=1):
     num_txt = str(number)
-    nums = [str(i) in num_txt for i in range(1, len(num_txt)+1)]
-    return all(nums)
+    num = first_number
+    while str(num) in num_txt:
+        num += 1
+    return num == len(num_txt) + 1
+
+
+def triangle_numbers(limit_number):
+    triangle_numbers = [1/2 * num * (num + 1) for num in range(1, limit_number + 1)]
+    return triangle_numbers
 
 # if __name__ == '__main__':
     # start = timer()
