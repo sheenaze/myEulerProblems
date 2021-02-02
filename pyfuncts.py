@@ -59,6 +59,16 @@ def primes(n):
     return [i for i in range(2, n + 1) if isprime(i)]
 
 
+def n_first_primes(n):
+    primes = []
+    i = 1
+    while len(primes) < n:
+        if isprime(i):
+            primes.append(i)
+        i += 1
+    return primes
+
+
 def prime_factors(max_num):
     num_factors = factors(max_num)
     return [number for number in num_factors if isprime(number)]
