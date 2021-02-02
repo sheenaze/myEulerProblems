@@ -59,5 +59,25 @@ def problem43():
     return result
 
 
-print(problem43())
+# print(problem43())
+
+
+# 44th problem ==============================================
+def problem44():
+    limit = 5000
+    diffs = []
+    for i in range(1, limit):
+        Pi = i * (i * 3 - 1) / 2
+        for j in range(i + 1, limit + 1):
+            Pj = j * (j * 3 - 1) / 2
+            result = Pi + Pj
+            diff = Pj - Pi
+            if is_pentagonal(diff) and is_pentagonal(result):
+                diffs.append(diff)
+
+    return min(diffs)
+
+
+# print(problem44())
+
 
