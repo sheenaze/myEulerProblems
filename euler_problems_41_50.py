@@ -38,4 +38,26 @@ def problem42():
 
 # print(problem42())
 
+# 43rd problem ==============================================
+
+
+def problem43():
+    base_num = '1234567890'
+    perms = permutations(base_num)
+    max_num = 7
+    primes = n_first_primes(max_num)
+    result = 0
+    for perm in perms:
+        num = int(''.join(perm))
+        i = 1
+        cond = True
+        while i <= max_num and cond:
+            cond = int(''.join(perm[i:i+3])) % primes[i-1] == 0
+            i += 1
+        if i == max_num + 1 and cond:
+            result += num
+    return result
+
+
+print(problem43())
 
