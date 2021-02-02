@@ -111,12 +111,13 @@ def fibonacci_generator(n):
         a, b = a + b, a
         yield a
 
+
 def is_pandigital(number, first_number=1):
     num_txt = str(number)
     num = first_number
     while str(num) in num_txt:
         num += 1
-    return num == len(num_txt) + 1
+    return num == len(num_txt) + first_number
 
 
 def triangle_numbers(limit_number):
