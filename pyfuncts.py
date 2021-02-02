@@ -124,6 +124,15 @@ def triangle_numbers(limit_number):
     triangle_numbers = [1/2 * num * (num + 1) for num in range(1, limit_number + 1)]
     return triangle_numbers
 
+
+def pentagonal_numbers(limit_index):
+    pent_nums = [num * (num * 3 - 1) / 2 for num in range(1, limit_index + 1)]
+    return pent_nums
+
+def is_pentagonal(num):
+    n = (1 + (24 * num + 1) ** (1/2)) / 6
+    return int(n) == n and n > 0
+
 # if __name__ == '__main__':
     # start = timer()
     # for num in range(100 + 1):
