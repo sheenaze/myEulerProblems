@@ -10,12 +10,12 @@ from timeit import default_timer as timer
 def problem41():
     nums = list('123456789')
     cond = False
-    while len(nums)>=1 and not cond:
-            for per in permutations(nums):
-                new_num = int(''.join(per))
-                if isprime(new_num):
-                    cond = True
-            nums.pop(-1)
+    while len(nums) >= 1 and not cond:
+        for per in permutations(nums):
+            new_num = int(''.join(per))
+            if isprime(new_num):
+                cond = True
+        nums.pop(-1)
     return new_num
 
 # print(problem41())
@@ -36,6 +36,7 @@ def problem42():
 
     return is_triangle
 
+
 # print(problem42())
 
 # 43rd problem ==============================================
@@ -52,7 +53,7 @@ def problem43():
         i = 1
         cond = True
         while i <= max_num and cond:
-            cond = int(''.join(perm[i:i+3])) % primes[i-1] == 0
+            cond = int(''.join(perm[i:i + 3])) % primes[i - 1] == 0
             i += 1
         if i == max_num + 1 and cond:
             result += num
@@ -80,4 +81,77 @@ def problem44():
 
 # print(problem44())
 
+# 45th problem ==============================================
+def problem45():
+    # not efficient way
+    num = 40756
+    cond = is_hexagonal(num) and is_pentagonal(num) and is_triangle(num)
+    while not cond:
+        num += 1
+        cond = is_hexagonal(num) and is_pentagonal(num) and is_triangle(num)
+    return num
+
+
+#
+# print(problem45())
+
+# 46th problem ==============================================
+def append_primes(primes_list, new_border):
+    for number in range(primes_list[-1], new_border - 1):
+        if isprime(number):
+            primes_list.insert(0, number)
+    return primes_list
+
+
+def append_double_squares(list_of_ds, new_border):
+    for number in range(list_of_ds[-1], new_border):
+        res = (number / 2) ** (1/2)
+        if int(res) == res:
+            list_of_ds.insert(0, number)
+    return list_of_ds
+
+
+def check_the_number_based_on_primes(number, primes_list):
+    for prime in primes_list:
+        result = number - prime
+        res = (result / 2) ** (1 / 2)
+        if int(res) == res:
+            return True
+    print('And the winner is: ', number)
+    return False
+
+
+def check_the_number_based_on_ds(number, list_of_ds):
+    for ds in list_of_ds:
+        result = number - ds
+        if isprime(result):
+            return True
+    print('The winner is: ', number)
+    return False
+
+
+def problem_46_based_on_primes():
+    primes_list = [7, 5, 3, 2]
+    number = 9
+    cond = True
+    while cond:
+        if not isprime(number):
+            primes_list = append_primes(primes_list, number)
+            cond = check_the_number_based_on_primes(number, primes_list)
+        number += 2
+
+
+def problem_46_based_on_ds():
+    ds_list = [8, 2]
+    number = 9
+    cond = True
+    while cond:
+        if not isprime(number):
+            ds_list = append_double_squares(ds_list, number)
+            cond = check_the_number_based_on_ds(number, ds_list)
+        number += 2
+
+
+# problem_46_based_on_primes() # result after around 191 seconds
+# problem_46_based_on_ds() # result after around 4 seconds
 
