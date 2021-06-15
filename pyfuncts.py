@@ -59,6 +59,11 @@ def primes(n):
     return [i for i in range(2, n + 1) if isprime(i)]
 
 
+def the_biggest_lower_prime(num):
+    while not isprime(num):
+        num -= 1
+    return num
+
 def n_first_primes(n):
     primes = []
     i = 1
@@ -125,12 +130,28 @@ def triangle_numbers(limit_number):
     return triangle_numbers
 
 
+def is_triangle(num):
+    n = ((8 * num + 1) ** (1/2) - 1) / 2
+    return int(n) == n and n > 0
+
+
 def pentagonal_numbers(limit_index):
     pent_nums = [num * (num * 3 - 1) / 2 for num in range(1, limit_index + 1)]
     return pent_nums
 
+
 def is_pentagonal(num):
     n = (1 + (24 * num + 1) ** (1/2)) / 6
+    return int(n) == n and n > 0
+
+
+def hexagonal_numbers(limit_index):
+    hex_nums = [num * (num * 2 - 1)  for num in range(1, limit_index + 1)]
+    return hex_nums
+
+
+def is_hexagonal(num):
+    n = ((8 * num + 1) ** (1/2) + 1) / 4
     return int(n) == n and n > 0
 
 # if __name__ == '__main__':
