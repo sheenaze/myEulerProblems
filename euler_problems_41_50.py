@@ -179,3 +179,13 @@ def problem_47():
 
 
 # problem_47()
+
+def problem_48():
+    result = 0
+    for i in range(1, 1001):
+        result += i ** i
+    res_char = str(result)
+    print(res_char[-10:])
+
+
+# problem_48()
