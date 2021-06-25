@@ -189,3 +189,19 @@ def problem_48():
 
 
 # problem_48()
+
+def problem_49():
+    numbers = ['0', '1', '2','3', '4', '5', '6', '7', '8', '9']
+    for comb in combinations_with_replacement(numbers, 4):
+        list_of_numbs = []
+        for perm in permutations(comb):
+            if perm[0] != '0':
+                joined = int(''.join(perm))
+                if isprime(joined) and joined not in list_of_numbs:
+                    list_of_numbs.append(joined)
+        abs_diffs = abs_differences_between_all_elements(list_of_numbs)
+        if len(list_of_numbs) >= 3 and check_how_many_times_repeats(3330, abs_diffs) == 2:
+            print(list_of_numbs, (abs_differences_between_all_elements(list_of_numbs)))
+
+
+# problem_49()
