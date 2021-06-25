@@ -1,5 +1,6 @@
 from pyfuncts import *
-from itertools import permutations, combinations_with_replacement
+from itertools import permutations, combinations_with_replacement, combinations
+import math
 import numpy as np
 import statistics
 from timeit import default_timer as timer
@@ -155,3 +156,26 @@ def problem_46_based_on_ds():
 # problem_46_based_on_primes() # result after around 191 seconds
 # problem_46_based_on_ds() # result after around 4 seconds
 
+def problem_47():
+    # a working solution, but not efficient one
+    numb = 4
+    primes_list = primes(700)
+    prod_list = []
+    for comb in combinations(primes_list, numb):
+        num_prod = math.prod(comb)
+        prod_list.append(num_prod)
+        for num in comb:
+            prod_list.append(num * num_prod)
+    sorted_list = sorted(prod_list)
+    sorted_list.insert(0, sorted_list[0])
+    d = np.diff(sorted_list)
+    ind0 = 0
+    cond = True
+    while cond:
+        if sum(d[ind0:ind0+numb-1]) == numb-1:
+            print(ind0, sorted_list[ind0:ind0+numb], d[ind0:ind0+numb-1], sum(d[ind0:ind0+numb-1]))
+            cond = False
+        ind0 += 1
+
+
+# problem_47()
