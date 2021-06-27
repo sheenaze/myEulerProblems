@@ -205,3 +205,19 @@ def problem_49():
 
 
 # problem_49()
+
+def problem_50():
+    primes_list = primes_in_range(2, 4000) # sum(primes_in_range(2, 4000)) = 1013507
+    results_list = []
+    length = len(primes_list)
+    n = 6
+    while results_list == []:
+        for ind in range(0, len(primes_list) - length + 1):
+            result = sum(primes_list[ind:ind + length])
+            if isprime(result) and result < 10**n:
+                results_list.append({'length': length, 'sum': result})
+        length -= 1
+    print(results_list)
+
+
+# problem_50()
