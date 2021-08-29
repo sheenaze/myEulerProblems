@@ -187,6 +187,27 @@ def problem37():
 # print(problem37())
 
 # 38th problem ==============================================
+
+
+def problem38():
+    # not the most effective one and 1000 is set as a start because in the range of 1 to 1000 there was no solution
+    numbers = [str(num) for num in range(1, 10)]
+    perms = [int(''.join(p)) for p in permutations(numbers)]
+    results = []
+    for num in range(1000, 10**4):
+        i = 1
+        result = '0'
+        while float(result) <= 987654321:
+            result = result.lstrip('0')
+            result += str(num * i)
+            i += 1
+            if int(result) in perms:
+                results.append(int(result))
+    return max(results)
+
+print(problem38())
+
+
 # 39th problem ==============================================
 
 
@@ -199,9 +220,6 @@ def problem39(p_max):
                 perimeters.append(sum([a,b,c]))
 
     return statistics.mode(perimeters)
-#
-# p = 1000
-# print(problem39(p))
 
 # 40th problem ==============================================
 
