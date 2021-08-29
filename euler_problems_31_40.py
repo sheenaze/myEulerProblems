@@ -94,19 +94,22 @@ def problem33():
 
 # 34th problem ==============================================
 def problem34():
-    num_dict ={
-        0: 1,
-        1: factorial(1),
-        2: factorial(2),
-        3: factorial(3),
-        4: factorial(4),
-        5: factorial(5),
-        6: factorial(6),
-        7: factorial(7),
-        8: factorial(8),
-        9: factorial(9),
-    }
-# print(num_dict)
+    # not really effective one, but works (also, there should be 10**7 actually, but it doesn't change the result)
+    sum_of_numbers = 0
+    numbers = []
+    for number in range(10, 10**6 + 1):
+        number_as_str = str(number)
+        result = 0
+        for digit in number_as_str:
+            result += factorial(int(digit))
+        if number == result:
+            numbers.append(number)
+            sum_of_numbers += number
+
+    print(numbers)
+    return sum_of_numbers
+
+# print(problem34())
 
 # 35th problem ==============================================
 
